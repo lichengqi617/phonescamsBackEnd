@@ -16,14 +16,14 @@ public class PhoneTableController {
 
     // RESTful API methods for Retrieval operations
     @GetMapping("/PhoneTable")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = {"http://localhost:8081", "http://localhost:3000"})
     public List<PhoneTable> list() {
         return service.listAll();
     }
 
     // RESTful API methods for Retrieval operations
     @GetMapping("/PhoneTable/{id}")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = {"http://localhost:8081", "http://localhost:3000"})
     public ResponseEntity<PhoneTable> get(@PathVariable Integer id) {
         try {
             PhoneTable phoneTable = service.get(id);
@@ -35,7 +35,7 @@ public class PhoneTableController {
 
     // RESTful API method for Create operation
     @PostMapping("/PhoneTable")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = {"http://localhost:8081", "http://localhost:3000"})
     public void add(@RequestBody PhoneTable phoneTable) {
         service.save(phoneTable);
     }
@@ -53,7 +53,7 @@ public class PhoneTableController {
 
     // RESTful API method for Delete operation
     @DeleteMapping("/PhoneTable/{id}")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = {"http://localhost:8081", "http://localhost:3000"})
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
