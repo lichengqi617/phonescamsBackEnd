@@ -31,7 +31,7 @@ public class PhoneTableService {
     }
 
     public PhoneTable getByCountryIDAndPhoneNumber(String countryID, String phoneNumber) {
-        return repo.findByCountryIDAndPhoneNumber(countryID, phoneNumber);
+        return repo.findByCountryIDAndPhoneNumber(countryID, phoneNumber).get();
     }
 
     public void delete(Integer id) {
