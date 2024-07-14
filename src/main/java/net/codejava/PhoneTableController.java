@@ -34,6 +34,24 @@ public class PhoneTableController {
     }
 
     // RESTful API method for Create operation
+    @PostMapping("/PhoneTable/{countryID}/{phoneNumber}")
+    @CrossOrigin
+    public void addByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
+        try {
+            PhoneTable existPhone = service.findByCountryIDAndPhoneNumber(countryID, phoneNumber);
+            existPhone.setVoteCount(existPhone.getVoteCount()+1);
+            service.save(existPhone);
+        } catch (NoSuchElementException e) {
+            PhoneTable phoneTable = new PhoneTable();
+            phoneTable.setCountryID(new BigDecimal(countryID));
+            phoneTable.setPhoneNumber(new BigDecimal(phoneNumber));
+            phoneTable.setVoteCount(new BigDecimal(1));
+            service.save(phoneTable);
+        }        
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // RESTful API method for Create operation
     @PostMapping("/PhoneTable")
     @CrossOrigin
     public void add(@RequestBody PhoneTable phoneTable) {
@@ -43,7 +61,8 @@ public class PhoneTableController {
     // RESTful API method for Update operation
     public ResponseEntity<?> update(@RequestBody PhoneTable phoneTable, @PathVariable Integer id) {
         try {
-            PhoneTable existProduct = service.get(id);
+            PhoneTable existPhone = service.get(id);
+            phoneTable.id = id;
             service.save(phoneTable);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
