@@ -33,7 +33,19 @@ public class PhoneTableController {
         }
     }
 
-    // RESTful API method for Create operation
+    // RESTful API method for get by CountryID and Phone number operation
+    @GetMapping("/PhoneTable/{countryID}/{phoneNumber}")
+    @CrossOrigin
+    public ResponseEntity<PhoneTable> getByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
+        try {
+            PhoneTable phoneTable = service.getByCountryIDAndPhoneNumber(countryID, phoneNumber);
+            return new ResponseEntity<PhoneTable>(phoneTable, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<PhoneTable>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // RESTful API method for Create or Update by CountryID and Phone number operation
     @PostMapping("/PhoneTable/{countryID}/{phoneNumber}")
     @CrossOrigin
     public void addByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
