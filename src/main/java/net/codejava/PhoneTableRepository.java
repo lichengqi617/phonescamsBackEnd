@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface PhoneTableRepository extends JpaRepository<PhoneTable, Integer> {
     @Query(nativeQuery = true, 
-        value = "select * from phone_table PhoneTable where PhoneTable.CountryID = :countryID and PhoneTable.PhoneNumber = :phoneNumber")
+        value = "select * from phone_table PhoneTable where PhoneTable.Country_ID = :countryID and PhoneTable.Phone_Number = :phoneNumber")
     Optional<PhoneTable> findByCountryIDAndPhoneNumber(@Param("countryID") String countryID, @Param("phoneNumber") String phoneNumber);
 }
