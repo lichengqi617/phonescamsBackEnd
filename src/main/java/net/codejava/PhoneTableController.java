@@ -73,7 +73,7 @@ public class PhoneTableController {
     public ResponseEntity<?> update(@RequestBody PhoneTable phoneTable, @PathVariable Integer id) {
         try {
             PhoneTable existPhone = service.get(id);
-            phoneTable.setID(id);
+            phoneTable.setId(id);
             service.save(phoneTable);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {

@@ -26,7 +26,9 @@ public class PhoneTable {
     @Column(name = "Status")
     private java.math.BigDecimal Status;
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return Id;
     }
 
@@ -38,7 +40,7 @@ public class PhoneTable {
         return CountryCode;
     }
 
-    public void setCountryCode(BigDecimal countryCode {
+    public void setCountryCode(BigDecimal countryCode) {
         this.CountryCode = countryCode;
     }
 
@@ -84,11 +86,5 @@ public class PhoneTable {
         this.UpdateTime = UpdateTime;
         this.VoteCount = VoteCount;
         this.Status = Status;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getID() {
-        return ID;
     }
 }
