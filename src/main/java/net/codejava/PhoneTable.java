@@ -5,12 +5,25 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "phone_table")
 public class PhoneTable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Integer ID;
+
+    @Column(name = "Country_ID")
     private BigDecimal CountryID;
+
+    @Column(name = "Phone_Number")
     private java.math.BigDecimal PhoneNumber;
+
+    @Column(name = "Vote_Count")
     private java.math.BigDecimal VoteCount;
+
+    @Column(name = "Update_Time")
     private java.sql.Timestamp UpdateTime;
+
+    @Column(name = "Status")
     private java.math.BigDecimal Status;
 
     public void setID(Integer ID) {
