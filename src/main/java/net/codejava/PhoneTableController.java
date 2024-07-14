@@ -33,29 +33,29 @@ public class PhoneTableController {
         }
     }
 
-    // RESTful API method for get by CountryID and Phone number operation
-    @GetMapping("/PhoneTable/{countryID}/{phoneNumber}")
+    // RESTful API method for get by CountryCode and Phone number operation
+    @GetMapping("/PhoneTable/{countryCode}/{phoneNumber}")
     @CrossOrigin
-    public ResponseEntity<PhoneTable> getByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
+    public ResponseEntity<PhoneTable> getByCountryCodeAndPhoneNumber(@PathVariable String countryCode, @PathVariable String phoneNumber) {
         try {
-            PhoneTable phoneTable = service.getByCountryIDAndPhoneNumber(countryID, phoneNumber);
+            PhoneTable phoneTable = service.getByCountryCodeAndPhoneNumber(countryCode, phoneNumber);
             return new ResponseEntity<PhoneTable>(phoneTable, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<PhoneTable>(HttpStatus.NOT_FOUND);
         }
     }
 
-    // RESTful API method for Create or Update by CountryID and Phone number operation
-    @PostMapping("/PhoneTable/{countryID}/{phoneNumber}")
+    // RESTful API method for Create or Update by CountryCode and Phone number operation
+    @PostMapping("/PhoneTable/{countryCode}/{phoneNumber}")
     @CrossOrigin
-    public void addByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
+    public void addByCountryCodeAndPhoneNumber(@PathVariable String countryCode, @PathVariable String phoneNumber) {
         try {
-            PhoneTable existPhone = service.getByCountryIDAndPhoneNumber(countryID, phoneNumber);
+            PhoneTable existPhone = service.getByCountryCodeAndPhoneNumber(countryCode, phoneNumber);
             existPhone.setVoteCount(existPhone.getVoteCount().add(new BigDecimal(1)));
             service.save(existPhone);
         } catch (NoSuchElementException e) {
             PhoneTable phoneTable = new PhoneTable();
-            phoneTable.setCountryID(new BigDecimal(countryID));
+            phoneTable.setCountryCode(new BigDecimal(countryCode));
             phoneTable.setPhoneNumber(new BigDecimal(phoneNumber));
             phoneTable.setVoteCount(new BigDecimal(1));
             service.save(phoneTable);

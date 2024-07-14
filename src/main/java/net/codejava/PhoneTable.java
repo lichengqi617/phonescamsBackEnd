@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 public class PhoneTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    private Integer ID;
+    private Integer Id;
 
-    @Column(name = "Country_ID")
-    private BigDecimal CountryID;
+    @Column(name = "Country_Code")
+    private BigDecimal CountryCode;
 
     @Column(name = "Phone_Number")
     private java.math.BigDecimal PhoneNumber;
@@ -26,16 +26,20 @@ public class PhoneTable {
     @Column(name = "Status")
     private java.math.BigDecimal Status;
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public int getId() {
+        return Id;
     }
 
-    public BigDecimal getCountryID() {
-        return CountryID;
+    public void setId(Integer Id) {
+        this.Id = Id;
     }
 
-    public void setCountryID(BigDecimal countryID) {
-        CountryID = countryID;
+    public BigDecimal getCountryCode() {
+        return CountryCode;
+    }
+
+    public void setCountryCode(BigDecimal countryCode {
+        this.CountryCode = countryCode;
     }
 
     public BigDecimal getPhoneNumber() {
@@ -43,7 +47,7 @@ public class PhoneTable {
     }
 
     public void setPhoneNumber(BigDecimal phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.PhoneNumber = phoneNumber;
     }
 
     public BigDecimal getVoteCount() {
@@ -51,7 +55,7 @@ public class PhoneTable {
     }
 
     public void setVoteCount(BigDecimal voteCount) {
-        VoteCount = voteCount;
+        this.VoteCount = voteCount;
     }
 
     public Timestamp getUpdateTime() {
@@ -59,7 +63,7 @@ public class PhoneTable {
     }
 
     public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
+        this.UpdateTime = updateTime;
     }
 
     public BigDecimal getStatus() {
@@ -67,16 +71,16 @@ public class PhoneTable {
     }
 
     public void setStatus(BigDecimal status) {
-        Status = status;
+        this.Status = status;
     }
 
     public PhoneTable() {
     }
 
-    public PhoneTable(Integer ID, BigDecimal CountryID, BigDecimal PhoneNumber, java.sql.Timestamp UpdateTime, BigDecimal VoteCount, java.math.BigDecimal Status) {
-        this.ID = ID;
+    public PhoneTable(Integer Id, BigDecimal CountryCode, BigDecimal PhoneNumber, java.sql.Timestamp UpdateTime, BigDecimal VoteCount, java.math.BigDecimal Status) {
+        this.Id = Id;
         this.PhoneNumber = PhoneNumber;
-        this.CountryID = CountryID;
+        this.CountryCode = CountryCode;
         this.UpdateTime = UpdateTime;
         this.VoteCount = VoteCount;
         this.Status = Status;
