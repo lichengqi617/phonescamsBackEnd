@@ -38,8 +38,8 @@ public class PhoneTableController {
     @CrossOrigin
     public void addByCountryIDAndPhoneNumber(@PathVariable String countryID, @PathVariable String phoneNumber) {
         try {
-            PhoneTable existPhone = service.findByCountryIDAndPhoneNumber(countryID, phoneNumber);
-            existPhone.setVoteCount(existPhone.getVoteCount()+1);
+            PhoneTable existPhone = service.getByCountryIDAndPhoneNumber(countryID, phoneNumber);
+            existPhone.setVoteCount(existPhone.getVoteCount().add(new BigDecimal(1)));
             service.save(existPhone);
         } catch (NoSuchElementException e) {
             PhoneTable phoneTable = new PhoneTable();
@@ -47,8 +47,7 @@ public class PhoneTableController {
             phoneTable.setPhoneNumber(new BigDecimal(phoneNumber));
             phoneTable.setVoteCount(new BigDecimal(1));
             service.save(phoneTable);
-        }        
-        return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
     // RESTful API method for Create operation
@@ -62,7 +61,7 @@ public class PhoneTableController {
     public ResponseEntity<?> update(@RequestBody PhoneTable phoneTable, @PathVariable Integer id) {
         try {
             PhoneTable existPhone = service.get(id);
-            phoneTable.id = id;
+            phoneTable.setID(id);
             service.save(phoneTable);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
