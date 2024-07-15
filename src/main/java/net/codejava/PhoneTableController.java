@@ -58,6 +58,7 @@ public class PhoneTableController {
             phoneTable.setCountryCode(new BigDecimal(countryCode));
             phoneTable.setPhoneNumber(new BigDecimal(phoneNumber));
             phoneTable.setVoteCount(new BigDecimal(1));
+            phoneTable.setStatus(new BigDecimal(0));
             service.save(phoneTable);
         }
     }
