@@ -1,7 +1,6 @@
 package net.codejava;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
@@ -19,6 +18,12 @@ public class PhoneTableController {
     @CrossOrigin
     public List<PhoneTable> list() {
         return service.listAll();
+    }
+
+    @GetMapping("/ListRecentPhoneTable")
+    @CrossOrigin
+    public List<PhoneTable> listRecent() {
+        return service.listRecentPhoneTable().get();
     }
 
     // RESTful API methods for Retrieval operations
