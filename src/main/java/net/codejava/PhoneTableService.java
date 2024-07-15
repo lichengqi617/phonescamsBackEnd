@@ -1,8 +1,8 @@
 package net.codejava;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +18,10 @@ public class PhoneTableService {
 
     public List<PhoneTable> listAll() {
         return repo.findAll();
+    }
+
+    public Optional<List<PhoneTable>> latestPhoneTable() {
+        return repo.listByUpdateTime();
     }
 
     public void save(PhoneTable phoneNumber) {
