@@ -16,7 +16,7 @@ public class PhoneTableController {
     // RESTful API methods for Retrieval operations
     @GetMapping("/PhoneTable")
     @CrossOrigin
-    public Optional<List<PhoneTable>> list() {
+    public List<PhoneTable> list() {
         return service.latestPhoneTable();
     }
 

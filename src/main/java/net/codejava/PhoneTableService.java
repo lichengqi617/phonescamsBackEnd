@@ -2,7 +2,6 @@ package net.codejava;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -20,8 +19,8 @@ public class PhoneTableService {
         return repo.findAll();
     }
 
-    public Optional<List<PhoneTable>> latestPhoneTable() {
-        return repo.listByUpdateTime();
+    public List<PhoneTable> latestPhoneTable() {
+        return repo.listByUpdateTime().get();
     }
 
     public void save(PhoneTable phoneNumber) {
