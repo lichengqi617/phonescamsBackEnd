@@ -17,4 +17,8 @@ public interface PhoneTableRepository extends JpaRepository<PhoneTable, Integer>
             value = "select * from phone_table ORDER BY update_time desc limit 10")
     Optional<List<PhoneTable>> listRecentPhoneTable();
 
+    @Query(nativeQuery = true,
+            value = "select * from phone_table ORDER BY vote_count desc limit 10")
+    Optional<List<PhoneTable>> listHighestVotedPhoneTable();
+
 }

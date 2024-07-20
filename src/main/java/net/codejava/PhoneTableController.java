@@ -26,6 +26,12 @@ public class PhoneTableController {
         return service.listRecentPhoneTable().get();
     }
 
+    @GetMapping("/ListHighestVotedPhoneNumbers")
+    @CrossOrigin
+    public List<PhoneTable> listByVotes() {
+        return service.listHighestVotedNumbers();
+    }
+
     // RESTful API methods for Retrieval operations
     @GetMapping("/PhoneTable/{id}")
     @CrossOrigin

@@ -24,6 +24,10 @@ public class PhoneTableService {
         return repo.listRecentPhoneTable();
     }
 
+    public List<PhoneTable> listHighestVotedNumbers() {
+        return repo.listHighestVotedPhoneTable().get();
+    }
+    
     public void save(PhoneTable phoneNumber) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         phoneNumber.setUpdateTime(timestamp);
